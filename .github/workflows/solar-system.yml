@@ -29,3 +29,9 @@ jobs:
           with:
             username: ${{ vars.username }}
             password: ${{ secrets.password }} 
+        - name: Docker Image and build
+          uses: docker/build-push-action@v6
+          with:
+            context: .
+            push: true
+            tags: ${{ vars.username }}/web:${{github.sha}}
